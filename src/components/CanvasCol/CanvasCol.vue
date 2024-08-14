@@ -14,8 +14,8 @@ const props = defineProps<{
       <h2 class="text-xs font-bold">{{ title }}</h2>
       <button
         type="button"
-        @click="infoButton"
         class="w-6 h-6 rounded-full border flex justify-center items-center"
+        @click="infoButton"
       >
         <mdicon name="information-variant" size="14" />
       </button>
@@ -26,8 +26,8 @@ const props = defineProps<{
     <div class="w-full shrink-0">
       <button
         type="button"
-        @click="addButton"
         class="h-6 rounded-full border flex justify-center items-center w-full"
+        @click="addButton"
       >
         <mdicon name="plus" size="14" />
         <span>Adicionar</span>

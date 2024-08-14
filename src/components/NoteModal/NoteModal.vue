@@ -117,21 +117,21 @@ watch(
           class="w-6 h-6 rounded-full cursor-pointer border-2"
           :class="selectedColor === color ? 'border-black' : 'border-transparent'"
         >
-          <input type="radio" v-model="selectedColor" :value="color" class="hidden" />
+          <input v-model="selectedColor" type="radio" :value="color" class="hidden" />
         </label>
       </div>
       <button
-        @click="save"
         class="w-full bg-primary hover:!bg-primary text-white py-2 rounded mb-2"
+        @click="save"
       >
         {{ isEditing ? 'Salvar Alterações' : 'Adicionar' }}
       </button>
-      <button @click="closeModal" class="w-full bg-gray-300 text-gray-700 py-2 rounded">
+      <button class="w-full bg-gray-300 text-gray-700 py-2 rounded" @click="closeModal">
         Cancelar
       </button>
       <div v-if="isEditing" class="mt-4 text-center">
         <p>Deseja excluir esse item?</p>
-        <button @click="deleteItem" class="text-red-500 underline">Excluir</button>
+        <button class="text-red-500 underline" @click="deleteItem">Excluir</button>
       </div>
     </div>
   </div>

@@ -20,10 +20,10 @@ const closeModal = () => {
   >
     <div class="w-[300px] bg-white rounded-lg p-4" @click.stop>
       <h2 class="text-lg font-bold mb-4">{{ title }}</h2>
-      <div v-html="content" class="text-gray-700 mb-4"></div>
+      <div class="text-gray-700 mb-4" v-html="content"></div>
       <button
-        @click="closeModal"
         class="w-full bg-primary hover:!bg-primary text-white py-2 rounded"
+        @click="closeModal"
       >
         Fechar
       </button>

@@ -32,47 +32,47 @@ const itemToEdit = ref<NoteItem | undefined>(undefined)
 
 const canvasStore = useCanvasStore()
 
-useDraggable(partnersCol, canvasStore.partners, {
+useDraggable(partnersCol, canvasStore.partners as any, {
   animation: 150,
   ghostClass: 'ghost',
   group: 'canvas'
 })
-useDraggable(activitiesCol, canvasStore.activities, {
+useDraggable(activitiesCol, canvasStore.activities as any, {
   animation: 150,
   ghostClass: 'ghost',
   group: 'canvas'
 })
-useDraggable(resourcesCol, canvasStore.resources, {
+useDraggable(resourcesCol, canvasStore.resources as any, {
   animation: 150,
   ghostClass: 'ghost',
   group: 'canvas'
 })
-useDraggable(valuePropositionsCol, canvasStore.valuePropositions, {
+useDraggable(valuePropositionsCol, canvasStore.valuePropositions as any, {
   animation: 150,
   ghostClass: 'ghost',
   group: 'canvas'
 })
-useDraggable(customerRelationshipsCol, canvasStore.customerRelationships, {
+useDraggable(customerRelationshipsCol, canvasStore.customerRelationships as any, {
   animation: 150,
   ghostClass: 'ghost',
   group: 'canvas'
 })
-useDraggable(channelsCol, canvasStore.channels, {
+useDraggable(channelsCol, canvasStore.channels as any, {
   animation: 150,
   ghostClass: 'ghost',
   group: 'canvas'
 })
-useDraggable(customerSegmentsCol, canvasStore.customerSegments, {
+useDraggable(customerSegmentsCol, canvasStore.customerSegments as any, {
   animation: 150,
   ghostClass: 'ghost',
   group: 'canvas'
 })
-useDraggable(costStructureCol, canvasStore.costStructure, {
+useDraggable(costStructureCol, canvasStore.costStructure as any, {
   animation: 150,
   ghostClass: 'ghost',
   group: 'canvas'
 })
-useDraggable(revenueStreamsCol, canvasStore.revenueStreams, {
+useDraggable(revenueStreamsCol, canvasStore.revenueStreams as any, {
   animation: 150,
   ghostClass: 'ghost',
   group: 'canvas'
@@ -130,24 +130,24 @@ const closeInfoModal = () => {
     </div>
 
     <NoteModal
-      :isVisible="isNoteModalVisible"
+      :is-visible="isNoteModalVisible"
       :column="activeColumn"
-      :itemToEdit="itemToEdit"
+      :item-to-edit="itemToEdit"
       @close="closeNoteModal"
     />
     <InfoModal
-      :isVisible="isInfoModalVisible"
+      :is-visible="isInfoModalVisible"
       :title="infoModalTitle"
       :content="infoModalContent"
       @close="closeInfoModal"
     />
 
-    <div class="w-full flex flex-col gap-3" id="element-to-pdf">
+    <div id="element-to-pdf" class="w-full flex flex-col gap-3">
       <CanvasRow>
         <CanvasCol
           title="Principais parceiros"
-          :addButton="() => openNoteModal('partners')"
-          :infoButton="
+          :add-button="() => openNoteModal('partners')"
+          :info-button="
             () =>
               openInfoModal(
                 'Principais parceiros',
@@ -163,19 +163,19 @@ const closeInfoModal = () => {
           <div ref="partnersCol" class="notes-wrapper">
             <Note
               v-for="item in canvasStore.partners"
+              :id="item.id"
               :key="item.id"
               :color="item.color"
-              :id="item.id"
               :text="item.text"
-              :editButton="() => openNoteModal('partners', item)"
+              :edit-button="() => openNoteModal('partners', item)"
             ></Note>
           </div>
         </CanvasCol>
         <CanvasDoubleCol>
           <CanvasCol
             title="Atividades principais"
-            :addButton="() => openNoteModal('activities')"
-            :infoButton="
+            :add-button="() => openNoteModal('activities')"
+            :info-button="
               () =>
                 openInfoModal(
                   'Atividades principais',
@@ -191,18 +191,18 @@ const closeInfoModal = () => {
             <div ref="activitiesCol" class="notes-wrapper">
               <Note
                 v-for="item in canvasStore.activities"
+                :id="item.id"
                 :key="item.id"
                 :color="item.color"
-                :id="item.id"
                 :text="item.text"
-                :editButton="() => openNoteModal('activities', item)"
+                :edit-button="() => openNoteModal('activities', item)"
               ></Note>
             </div>
           </CanvasCol>
           <CanvasCol
             title="Principais recursos"
-            :addButton="() => openNoteModal('resources')"
-            :infoButton="
+            :add-button="() => openNoteModal('resources')"
+            :info-button="
               () =>
                 openInfoModal(
                   'Principais recursos',
@@ -218,19 +218,19 @@ const closeInfoModal = () => {
             <div ref="resourcesCol" class="notes-wrapper">
               <Note
                 v-for="item in canvasStore.resources"
+                :id="item.id"
                 :key="item.id"
                 :color="item.color"
-                :id="item.id"
                 :text="item.text"
-                :editButton="() => openNoteModal('resources', item)"
+                :edit-button="() => openNoteModal('resources', item)"
               ></Note>
             </div>
           </CanvasCol>
         </CanvasDoubleCol>
         <CanvasCol
           title="Proposta de valor"
-          :addButton="() => openNoteModal('valuePropositions')"
-          :infoButton="
+          :add-button="() => openNoteModal('valuePropositions')"
+          :info-button="
             () =>
               openInfoModal(
                 'Proposta de valor',
@@ -246,19 +246,19 @@ const closeInfoModal = () => {
           <div ref="valuePropositionsCol" class="notes-wrapper">
             <Note
               v-for="item in canvasStore.valuePropositions"
+              :id="item.id"
               :key="item.id"
               :color="item.color"
-              :id="item.id"
               :text="item.text"
-              :editButton="() => openNoteModal('valuePropositions', item)"
+              :edit-button="() => openNoteModal('valuePropositions', item)"
             ></Note>
           </div>
         </CanvasCol>
         <CanvasDoubleCol>
           <CanvasCol
             title="Relacionamento com os clientes"
-            :addButton="() => openNoteModal('customerRelationships')"
-            :infoButton="
+            :add-button="() => openNoteModal('customerRelationships')"
+            :info-button="
               () =>
                 openInfoModal(
                   'Relacionamento com os clientes',
@@ -274,18 +274,18 @@ const closeInfoModal = () => {
             <div ref="customerRelationshipsCol" class="notes-wrapper">
               <Note
                 v-for="item in canvasStore.customerRelationships"
+                :id="item.id"
                 :key="item.id"
                 :color="item.color"
-                :id="item.id"
                 :text="item.text"
-                :editButton="() => openNoteModal('customerRelationships', item)"
+                :edit-button="() => openNoteModal('customerRelationships', item)"
               ></Note>
             </div>
           </CanvasCol>
           <CanvasCol
             title="Canais"
-            :addButton="() => openNoteModal('channels')"
-            :infoButton="
+            :add-button="() => openNoteModal('channels')"
+            :info-button="
               () =>
                 openInfoModal(
                   'Canais',
@@ -303,19 +303,19 @@ const closeInfoModal = () => {
             <div ref="channelsCol" class="notes-wrapper">
               <Note
                 v-for="item in canvasStore.channels"
+                :id="item.id"
                 :key="item.id"
                 :color="item.color"
-                :id="item.id"
                 :text="item.text"
-                :editButton="() => openNoteModal('channels', item)"
+                :edit-button="() => openNoteModal('channels', item)"
               ></Note>
             </div>
           </CanvasCol>
         </CanvasDoubleCol>
         <CanvasCol
           title="Segmentos de clientes"
-          :addButton="() => openNoteModal('customerSegments')"
-          :infoButton="
+          :add-button="() => openNoteModal('customerSegments')"
+          :info-button="
             () =>
               openInfoModal(
                 'Segmentos de clientes',
@@ -329,11 +329,11 @@ const closeInfoModal = () => {
           <div ref="customerSegmentsCol" class="notes-wrapper">
             <Note
               v-for="item in canvasStore.customerSegments"
+              :id="item.id"
               :key="item.id"
               :color="item.color"
-              :id="item.id"
               :text="item.text"
-              :editButton="() => openNoteModal('customerSegments', item)"
+              :edit-button="() => openNoteModal('customerSegments', item)"
             ></Note>
           </div>
         </CanvasCol>
@@ -341,8 +341,8 @@ const closeInfoModal = () => {
       <CanvasRow>
         <CanvasCol
           title="Estrutura de custos"
-          :addButton="() => openNoteModal('costStructure')"
-          :infoButton="
+          :add-button="() => openNoteModal('costStructure')"
+          :info-button="
             () =>
               openInfoModal(
                 'Estrutura de custos',
@@ -361,18 +361,18 @@ const closeInfoModal = () => {
           >
             <Note
               v-for="item in canvasStore.costStructure"
+              :id="item.id"
               :key="item.id"
               :color="item.color"
-              :id="item.id"
               :text="item.text"
-              :editButton="() => openNoteModal('costStructure', item)"
+              :edit-button="() => openNoteModal('costStructure', item)"
             ></Note>
           </div>
         </CanvasCol>
         <CanvasCol
           title="Fontes de receitas"
-          :addButton="() => openNoteModal('revenueStreams')"
-          :infoButton="
+          :add-button="() => openNoteModal('revenueStreams')"
+          :info-button="
             () =>
               openInfoModal(
                 'Fontes de receitas',
@@ -393,11 +393,11 @@ const closeInfoModal = () => {
           >
             <Note
               v-for="item in canvasStore.revenueStreams"
+              :id="item.id"
               :key="item.id"
               :color="item.color"
-              :id="item.id"
               :text="item.text"
-              :editButton="() => openNoteModal('revenueStreams', item)"
+              :edit-button="() => openNoteModal('revenueStreams', item)"
             ></Note>
           </div>
         </CanvasCol>

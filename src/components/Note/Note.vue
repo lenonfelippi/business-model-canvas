@@ -16,8 +16,8 @@ const props = defineProps<{
       <mdicon name="drag" size="14" class="cursor-move" />
       <button
         type="button"
-        @click="editButton"
         class="h-6 w-6 rounded-full flex justify-center items-center cursor-pointer"
+        @click="editButton"
       >
         <mdicon name="pencil" size="14" />
       </button>
